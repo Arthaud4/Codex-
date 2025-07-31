@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <script runat="server">
+        Platform.Load("Core","1");
+        var name = Request.GetQueryStringParameter("name");
+        var email = Request.GetQueryStringParameter("email");
+        if (name && email) {
+            Write("<p>Thanks, " + name + ". We'll contact you at " + email + ".</p>");
+        } else {
+            Write("<p>Please provide your name and email.</p>");
+        }
+    </script>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form method="GET" action="%%=RequestParameter('PAGEURL')=%%">
+        <label>Name: <input type="text" name="name" /></label><br />
+        <label>Email: <input type="email" name="email" /></label><br />
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>
